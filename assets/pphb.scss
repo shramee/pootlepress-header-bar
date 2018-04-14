@@ -22,6 +22,15 @@ a.pphb-btn {
 	background: #2674b1;
 	margin: .2em .43em;
 	font-size: 14px;
+	opacity: .88;
+	-webkit-transition: -webkit-transform 250ms;
+	transition: transform 250ms;
+	font-family: Raleway, "Helvetica Neue", sans-serif;
+	&:hover {
+		-webkit-transform: scale( 1.04 );
+		transform: scale( 1.04 );
+		opacity: 1;
+	}
 }
 
 .pphb-popular, .pphb-bundle {
