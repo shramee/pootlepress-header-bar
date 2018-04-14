@@ -11,12 +11,11 @@ Author Email: shramee.srivastav@gmail.com
 function pootlepress_header_bar_btn( $url, $label, $attr = '' ) {
 	?>
 	<a class="pphb-btn" <?php echo $attr ?> href="https://www.pootlepress.com/<?php echo $url ?>">
-		<i class="fa fa-wordpress"></i> <?php echo $label ?></a>
+		<?php echo $label ?></a>
 	<?php
 }
 
 function pootlepress_header_bar() {
-	wp_enqueue_style( 'pphb-css', plugin_dir_url( __FILE__ ) . '/assets/pphb.css' );
 	?>
 	<div class="pp-topbar">
 		<div class="pphb-popular">
@@ -24,7 +23,7 @@ function pootlepress_header_bar() {
 			<?php
 			pootlepress_header_bar_btn( 'pootle-pagebuilder-pro/', 'Pagebuilder Pro', 'style="background:#cf6c69"' );
 			pootlepress_header_bar_btn( 'shop/storefront-pro/', 'Storefront Pro', 'style="background:#21a6ce"' );
-			pootlepress_header_bar_btn( '18-tags-pro/', '18 Tags Pro', 'style="background:#a669e2"' );
+			pootlepress_header_bar_btn( '18-tags-pro/', '18Tags Pro', 'style="background:#a669e2"' );
 			echo '<span mobile-only>';
 			pootlepress_header_bar_btn( 'pootle-bundles/', 'Get a Bundle', 'style="background:#eb3f5f"' );
 			echo '</span>';
@@ -43,7 +42,11 @@ function pootlepress_header_bar() {
 	</div>
 	<?php
 }
-
 add_action( 'eighteen_tags_before_header', 'pootlepress_header_bar' );
 add_action( 'storefront_before_header', 'pootlepress_header_bar' );
 add_action( 'caxton_before_header', 'pootlepress_header_bar' );
+
+function pootlepress_header_bar_scripts() {
+	wp_enqueue_style( 'pphb-css', plugin_dir_url( __FILE__ ) . '/assets/pphb.css' );
+}
+add_action( 'wp_enqueue_scripts', 'pootlepress_header_bar_scripts' );
